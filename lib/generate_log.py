@@ -9,26 +9,26 @@ def generate_log(data):
         data (list): A list of string log entries to write to the file.
 
     Returns:
-        str: The filename of the created log file (e.g. 'log_20250611.txt').
+        str: The filename of the created log file e.g. 'log_20250611.txt'
 
     Raises:
         ValueError: If data is not a list.
     """
-    # STEP 1: Validate input — only lists are accepted
+    # STEP 1: Validate input
     if not isinstance(data, list):
         raise ValueError(
             f"Expected a list of log entries, got {type(data).__name__}."
         )
 
-    # STEP 2: Build the filename using today's date
+    # STEP 2: Generate filename with today's date
     filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
 
-    # STEP 3: Write each entry to the file, one line per entry
+    # STEP 3: Write each entry to the file
     with open(filename, "w") as file:
         for entry in data:
             file.write(f"{entry}\n")
 
-    # STEP 4: Confirm the file was written
+    # STEP 4: Print confirmation message
     print(f"Log written to {filename}")
 
     return filename
